@@ -27,7 +27,7 @@
             $('#back-to-previous-books').on('click', function() {
                 displayBooks(initialBooks);
                 displayingMoreBooks = false;
-                toggleButtons();
+                changeButtons();
             });
         });
 
@@ -42,7 +42,7 @@
                     initialBooks = data.books;
                     allBooks = initialBooks;
                     displayBooks(initialBooks);
-                    toggleButtons();
+                    changeButtons();
                 }
             });
         }
@@ -59,7 +59,7 @@
                     });
                     displayBooks(moreBooks);
                     displayingMoreBooks = true;
-                    toggleButtons();
+                    changeButtons();
                 }
             });
         }
@@ -85,7 +85,7 @@
             displayBooks(filteredBooks);
         }
 
-        function toggleButtons() {
+        function changeButtons() {
             if (displayingMoreBooks) {
                 $('#load-more-books').hide();
                 $('#back-to-previous-books').show();
