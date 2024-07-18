@@ -1,0 +1,18 @@
+{
+    "books": [
+        {
+            "title": "The 7 Habits of Highly Effective People",
+            "author": "Stephen R. Covey",
+            "description": "Powerful Lessons in Personal Change",
+            "image": "7 Habits.jpg",
+            "price": "Rs1200"
+        },
+        {
+            "title": "The Power of Now",
+            "author": "Eckhart Tolle",
+            "description": "A Guide to Spiritual Enlightenment",
+            "image": "Power of Now.jpg",
+            "price": "Rs1500"
+        }
+    ]
+}

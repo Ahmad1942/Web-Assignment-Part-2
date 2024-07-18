@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to My Online Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        
+        $(document).ready(function() {
+            let initialBooks = [];
+            let moreBooks = [];
+            let allBooks = [];
+            let displayingMoreBooks = false;
+
+            loadBooks();
+
+            $('#search input').on('input', function() {
+                const query = $(this).val().toLowerCase();
+                filterBooks(query);
+            });
+
+            $('#load-more-books').on('click', function() {
+                loadMoreBooks();
+            });
+
+            $('#back-to-previous-books').on('click', function() {
+                displayBooks(initialBooks);
+                displayingMoreBooks = false;
+                toggleButtons();
+            });
+        });
+
+        
+
+        function loadBooks() {
+            $.ajax({
+                url: 'books.json',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    initialBooks = data.books;
+                    allBooks = initialBooks;
+                    displayBooks(initialBooks);
+                    toggleButtons();
+                }
+            });
+        }
+
+        function loadMoreBooks() {
+            $.ajax({
+                url: 'more-books.json', 
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    moreBooks = data.books;
+                    moreBooks.forEach(book => {
+                        allBooks.push(book);
+                    });
+                    displayBooks(moreBooks);
+                    displayingMoreBooks = true;
+                    toggleButtons();
+                }
+            });
+        }
+
+        function displayBooks(books) {
+            $('#book-list').empty();
+            books.forEach(book => {
+                const bookItem = `<tr>
+                    <td><img src="${book.image}" alt="${book.title} Cover"></td>
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>${book.price}</td>
+                </tr>`;
+                $('#book-list').append(bookItem);
+            });
+        }
+
+        function filterBooks(query) {
+            const filteredBooks = allBooks.filter(book =>
+                book.title.toLowerCase().includes(query) ||
+                book.author.toLowerCase().includes(query)
+            );
+            displayBooks(filteredBooks);
+        }
+
+        function toggleButtons() {
+            if (displayingMoreBooks) {
+                $('#load-more-books').hide();
+                $('#back-to-previous-books').show();
+            } else {
+                $('#load-more-books').show();
+                $('#back-to-previous-books').hide();
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<header>
+    <h1>My Online BookStore</h1>
+    <div id="menu-items">
+        <a href="#">Home</a>
+        <a href="#">Books</a>
+        <a href="#">Contact</a>
+        <div id="search">
+            <input type="search" placeholder="Search Here" name="search">
+        </div>
+    </div>
+</header>
+
+<main>
+    <section id="featured-books">
+        <h2>Featured Books</h2>
+        <p>Discover our top picks for personal development and wealth creation. From the transformative power of small habits to the secrets of building wealth, these three books are a must-read for anyone looking to improve their lives. Explore the insights of James Clear, Robert T. Kiyosaki, and Napoleon Hill, and start your journey to success today!</p>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Cover</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="book-list">
+            </tbody>
+        </table>
+        <button id="load-more-books">Load More Books</button>
+        <button id="back-to-previous-books" style="display: none;">Back to Previous Books</button>
+    </section>
+
+    <section id="about-us">
+        <h2>About Us</h2>
+        <p>We're passionate about empowering individuals to reach their full potential. Our mission is to provide access to knowledge and resources that can transform lives. We believe that personal development and wealth creation are within everyone's grasp, and we're committed to helping people achieve their goals through our curated selection of books and resources. Our team is dedicated to sourcing the best materials and creating a supportive community that inspires growth, learning, and success.</p>
+    </section>
+
+    <section id="customer-reviews">
+        <h2>Customer Reviews</h2>
+        <ul>
+            <li>"I love shopping at My Online Bookstore! The selection is amazing and the prices are unbeatable." - M. Ali.</li>
+            <li>"I was impressed by the fast shipping and excellent customer service. I'll definitely be back!" - Usama Butt.</li>
+            <li>"Excellent customer service." - Daud.</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" placeholder="Enter your Name" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" placeholder="Enter your Email Id" id="email" name="email"><br><br>
+            <label for="message">Message:</label>
+            <textarea id="message" rows="5" placeholder="Please Give your Valuable message" name="message"></textarea><br><br>
+            <input type="submit" value="Send">
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 My Online Bookstore</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background-color: #3498db;
+}
+
+header {
+  background-color: #3498db;
+  padding: 1em;
+  text-align: center;
+}
+
+header h1 {
+  color: white;
+  margin-bottom: 0;
+}
+
+header a {
+  margin: 10px; 
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+header a:hover {
+  color: #172591;
+}
+
+#menu-items{
+  margin-top: 10px;
+}
+
+#search{
+  margin-top: 10px;
+  margin-bottom: 0%;
+}
+
+
+main {
+  padding: 2em;
+}
+
+section {
+  background-color: white;
+  padding: 2em;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: px;
+}
+
+h2 {
+  color: #3498db;
+  margin-top: 0;
+}
+
+td img {
+  height: 200px; 
+  object-fit: cover; 
+  margin: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #f7f7f7;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input{
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+}
+
+ul li{
+  list-style-type: square;
+}
+
+textarea {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #2980b9; 
+}
+input[type = "search"] {
+  border-radius: 5px;
+  width: 15%;
+  text-align: left;
+}
+
+
+footer {
+  background-color: #3498db;
+  color: white;
+  padding: 0.5em;
+  text-align: center;
+}

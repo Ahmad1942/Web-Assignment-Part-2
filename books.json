@@ -1,0 +1,25 @@
+{
+    "books": [
+        {
+            "title": "Atomic Habits",
+            "author": "James Clear",
+            "description": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+            "image": "Atomic Habit.jpg",
+            "price": "Rs1650"
+        },
+        {
+            "title": "Rich Dad Poor Dad",
+            "author": "Robert T. Kiyosaki",
+            "description": "What the Rich Teach Their Kids About Money That the Poor and Middle Class Do Not!",
+            "image": "Rich Dad Poor Dad.jpg",
+            "price": "Rs1000"
+        },
+        {
+            "title": "Think and Grow Rich",
+            "author": "Napoleon Hill",
+            "description": "The Landmark Bestseller Now Revised and Updated for the 21st Century",
+            "image": "Think and Grow Rich.jpg",
+            "price": "Rs1050"
+        }
+    ]
+}
